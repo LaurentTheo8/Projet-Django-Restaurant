@@ -1,0 +1,56 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section id="contact" data-stellar-background-ratio="0.5">
+    <div class="container">
+        <div class="row">
+
+            <div class="wow fadeInUp col-md-6 col-sm-12" data-wow-delay="0.4s">
+                <div id="google-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10506.846753928618!2d2.2672905!3d48.8255622!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x53fef117bef4b67a!2sH3%20HiTeMa!5e0!3m2!1sfr!2sfr!4v1591793806305!5m2!1sfr!2sfr" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-sm-12">
+
+                <div class="col-md-12 col-sm-12">
+                    <div class="section-title wow fadeInUp" data-wow-delay="0.1s">
+                        <h2 id = "contactus">Contact Us</h2>
+                    </div>
+                </div>
+
+                <!-- CONTACT FORM -->
+
+                <form action="{% url 'contact' %}" method="post" class="wow fadeInUp" id="contact-form" role="form" data-wow-delay="0.8s">
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}
+
+                    <div class="col-md-6 col-sm-6">
+                        {{ form.name.errors }}
+                        {{ form.name }}
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        {{ form.email.errors }}
+                        {{ form.email }}
+                    </div>
+
+                    <div class="col-md-12 col-sm-12">
+                        {{ form.subject.errors }}
+                        {{ form.subject }}
+
+                        {{ form.message.errors }}
+                        {{ form.message }}
+                    </div>
+                    <button type="submit" class="form-control" id="cf-submit" name="submit">Send Message</button>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

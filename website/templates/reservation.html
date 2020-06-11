@@ -1,0 +1,50 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section id="reservation" data-stellar-background-ratio="0.5">
+    <div class="container">
+
+        <div class="col-md-12 col-sm-12">
+            <div class="section-title wow fadeInUp" data-wow-delay="0.1s">
+                <h2 id = "reserve">Reserve a table</h2>
+            </div>
+        </div>
+
+        <form action="{% url 'reservation' %}" method="post" class="wow fadeInUp" id="reservation-form" role="form" data-wow-delay="0.8s">
+            {% csrf_token %}
+            <div class = "row">
+                <div class="col-sm-6 col-sm-4">
+                    {{ form.customer.errors }}
+                    {{ form.customer }}
+                </div>
+                <div class="col-sm-4 col-sm-4">
+                    {{ form.email.errors }}
+                    {{ form.email }}
+                </div>
+            </div>
+            <div class="col-sm-4 col-sm-2">
+                {{ form.date.errors }}
+                {{ form.date }}
+            </div>
+            <div class="col-md-6 col-sm-6">
+                {{ form.nbPerson.errors }}
+                {{ form.nbPerson }}
+            </div>
+
+            <div class="col-md-12 col-sm-12">
+                {{ form.message.errors }}
+                {{ form.message }}
+            </div>
+
+            <button type="submit" class="form-control" id="cf-submit" name="submit">Send Reservation</button>
+        </form>
+
+    </div>
+
+</section>
+
+
+{% endblock %}
